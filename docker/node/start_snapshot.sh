@@ -25,12 +25,15 @@ nodeos \
 --plugin eosio::chain_plugin \
 --plugin eosio::chain_api_plugin \
 --plugin eosio::http_plugin \
+--plugin eosio::state_history_plugin \
 --data-dir $DATADIR"/data" \
 --blocks-dir $DATADIR"/blocks" \
 --config-dir $DATADIR"/config" \
 --producer-name $BPACCOUNT \
 --http-server-address 0.0.0.0:8888 \
+--state-history-endpoint 0.0.0.0:8080 \
 --p2p-listen-endpoint 0.0.0.0:9010 \
+--disable-replay-opts \
 --access-control-allow-origin=* \
 --contracts-console \
 --http-validate-host=false \

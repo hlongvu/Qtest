@@ -41,10 +41,10 @@ copy_snapshots:
 build:
 	# docker build -f Dockerfile -t songmai108/qtest:$(IMAGE_VERSION) . --platform linux/amd64
 	# docker build -f Dockerfile -t songmai108/qtest:$(IMAGE_VERSION) . --platform linux/arm64
-	docker buildx build -f Dockerfile -t songmai108/qtest:$(IMAGE_VERSION) --platform linux/amd64,linux/arm64 . --push
+	docker build -f Dockerfile -t qtestlocal/qtestlocal:$(IMAGE_VERSION) --platform linux/amd64 .
 
 start: stop
-	docker run --name qtest --env SYSTEM_TOKEN_SYMBOL="TLOS" -d -p 8888:8888 songmai108/qtest:$(IMAGE_VERSION)
+	docker run --name qtest --env SYSTEM_TOKEN_SYMBOL="WAX" -d -p 8888:8888 -p 8080:8080 qtestlocal/qtestlocal:$(IMAGE_VERSION)
 
 stop:
 	docker container rm qtest -f
